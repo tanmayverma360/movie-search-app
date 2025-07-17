@@ -5,21 +5,34 @@
   transition: background 0.3s, color 0.3s;
 }
 
-.light {
+.App.light {
   background-color: #f9f9f9;
   color: #111;
 }
 
-.dark {
+.App.dark {
   background-color: #111;
   color: #f9f9f9;
 }
 
+/* Ensure all nested containers inherit */
+.App.light .search-box,
+.App.dark .search-box,
+.App.light .filters,
+.App.dark .filters,
+.App.light .movie-list,
+.App.dark .movie-list {
+  background-color: inherit;
+  color: inherit;
+}
+
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 /* Toggle button styling */
 .toggle-button {
   background: none;
@@ -31,18 +44,15 @@
   transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 
-/* Light mode styles */
-.light .toggle-button {
+.App.light .toggle-button {
   color: #111;
   border-color: #111;
 }
 
-/* Dark mode styles */
-.dark .toggle-button {
+.App.dark .toggle-button {
   color: #f9f9f9;
   border-color: #f9f9f9;
 }
-
 
 /* Search box */
 .search-box {
@@ -67,8 +77,7 @@
   cursor: pointer;
 }
 
-/* Autocomplete suggestions */
-/* Suggestions - light and dark mode support */
+/* Suggestions */
 .suggestions {
   list-style: none;
   margin-top: 5px;
@@ -82,14 +91,12 @@
   border: 1px solid #ccc;
 }
 
-/* Light mode suggestions */
-.light .suggestions {
+.App.light .suggestions {
   background-color: #fff;
   color: #000;
 }
 
-/* Dark mode suggestions */
-.dark .suggestions {
+.App.dark .suggestions {
   background-color: #222;
   color: #fff;
 }
@@ -104,8 +111,7 @@
   color: white;
 }
 
-
-/* Movie cards */
+/* Movie list */
 .movie-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -113,27 +119,79 @@
   margin-top: 30px;
 }
 
-/* Movie cards - light and dark mode */
-.light .movie-card {
-  background-color: #fff;
-  color: #000;
-}
-
-.dark .movie-card {
-  background-color: #222;
-  color: #fff;
-}
-
+/* Movie cards */
 .movie-card {
   padding: 10px;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: background 0.3s, color 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+.App.light .movie-card {
+  background-color: #fff;
+  color: #000;
+}
+
+.App.dark .movie-card {
+  background-color: #222;
+  color: #fff;
+}
 
 .movie-card img {
   width: 100%;
   border-radius: 6px;
+}
+
+/* Filters */
+.filters {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.filters select,
+.filters input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Movie detail */
+.movie-detail {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  color: inherit;
+}
+
+.movie-detail h2 {
+  margin-bottom: 10px;
+}
+
+.movie-detail img {
+  width: 250px;
+  float: left;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+
+.movie-detail p {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.movie-detail .back-button {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 8px 16px;
+  background: #007bff;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.App.dark .movie-detail .back-button {
+  background: #444;
 }
