@@ -1,86 +1,139 @@
-/* App.css */
-
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212;
-  color: #ffffff;
-}
-
+/* Base styling */
 .App {
-  text-align: center;
-  padding: 2rem;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  transition: background 0.3s, color 0.3s;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #ffcc00;
+.light {
+  background-color: #f9f9f9;
+  color: #111;
 }
 
-.search-box {
+.dark {
+  background-color: #111;
+  color: #f9f9f9;
+}
+
+.header {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Toggle button styling */
+.toggle-button {
+  background: none;
+  border: 1px solid;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Light mode styles */
+.light .toggle-button {
+  color: #111;
+  border-color: #111;
+}
+
+/* Dark mode styles */
+.dark .toggle-button {
+  color: #f9f9f9;
+  border-color: #f9f9f9;
+}
+
+
+/* Search box */
+.search-box {
+  margin-top: 20px;
+  position: relative;
 }
 
 .search-box input {
   padding: 10px;
-  font-size: 1rem;
-  width: 300px;
-  border: none;
-  border-radius: 5px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 .search-box button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #ffcc00;
+  padding: 10px;
+  margin-left: 8px;
   border: none;
-  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
   cursor: pointer;
+}
+
+/* Autocomplete suggestions */
+/* Suggestions - light and dark mode support */
+.suggestions {
+  list-style: none;
+  margin-top: 5px;
+  padding: 0;
+  width: 250px;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 10;
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
+
+/* Light mode suggestions */
+.light .suggestions {
+  background-color: #fff;
   color: #000;
-  font-weight: bold;
-  transition: background-color 0.3s;
 }
 
-.search-box button:hover {
-  background-color: #e6b800;
+/* Dark mode suggestions */
+.dark .suggestions {
+  background-color: #222;
+  color: #fff;
 }
 
+.suggestions li {
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+
+/* Movie cards */
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 20px;
-  padding: 20px;
+  margin-top: 30px;
+}
+
+/* Movie cards - light and dark mode */
+.light .movie-card {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark .movie-card {
+  background-color: #222;
+  color: #fff;
 }
 
 .movie-card {
-  background-color: #1e1e1e;
-  padding: 15px;
+  padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-  transition: transform 0.2s ease-in-out;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s, color 0.3s;
 }
 
-.movie-card:hover {
-  transform: translateY(-5px);
-}
 
 .movie-card img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.movie-card h3 {
-  margin: 10px 0 5px;
-  font-size: 1.2rem;
-}
-
-.movie-card p {
-  margin: 5px 0;
-  font-size: 0.95rem;
-  color: #ccc;
+  border-radius: 6px;
 }
